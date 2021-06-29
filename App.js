@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Tasks from './components/Task'
 
+
 export default function App() {
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
@@ -10,6 +11,12 @@ export default function App() {
     Keyboard.dismiss();
     setTaskItems([...taskItems, task])
     setTask(null);
+  }
+
+  const finishedTask = (index) => {
+    let itemsCopy = [...taskItems]
+    itemsCopy.splice(index, 1)
+    setTaskItems(itemsCopy)
   }
 
   return (
@@ -23,7 +30,11 @@ export default function App() {
           {/* This is where the tasks will go */}
           {
             taskItems.map((item, index) => {
-              return <Tasks key={index} text={item} />
+              return (
+                <TouchableOpacity key={index} onPress={() => finishedTask(index)}>
+                  <Tasks text={item} />
+                </TouchableOpacity>
+              )
             })
           }
         </View>

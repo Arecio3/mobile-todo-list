@@ -15,7 +15,7 @@ const Task = ({ text }) => {
 
 const styles = StyleSheet.create({
   item: {
-      backgroundColor: 'white',
+      backgroundColor: '#FFF',
       padding: 15,
       borderRadius: 10,
       flexDirection: 'row',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
       height: 12,
       borderColor: '#55BCF6',
       borderWidth: 2,
-      borderRadius:5,
+      borderRadius: 5,
   },
 });
 export default Task;
